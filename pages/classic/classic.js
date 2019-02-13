@@ -9,12 +9,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classic: null
+    classic: null,
+    latest: true,
+    first: false
   },
 
   onLike: function (event) {
     const behavior = event.detail.behavior
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
+  },
+
+  onNext: function (event) {
+  },
+
+  onPrevious: function (event) {
   },
 
   /**
