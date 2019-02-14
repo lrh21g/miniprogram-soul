@@ -1,0 +1,114 @@
+.container {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.head {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+.title {
+  margin-top: 20rpx;
+  font-size: 38rpx;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.author {
+  font-size: 28rpx;
+  color: #999;
+  /* margin-bottom: 30rpx; */
+}
+
+.head image {
+  width: 200rpx;
+  height: 300rpx;
+  box-shadow: 2px 2px 3px #e3e3e3;
+}
+
+.sub-container {
+  width: 690rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+  padding: 30rpx;
+  background-color: #fff;
+}
+
+.headline {
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.comment-container v-tag {
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.content {
+  text-indent: 58rpx;
+  font-weight: 500;
+}
+
+.num {
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+/* 使用此方法修改短评的第一个和第二个的样式，违反了组件封装的原则。类似 hack */
+/* 其修改方法需要知道组件内部结构 */
+/* 不要对自定义组件应用样式，因为无法确定是对组件中那些标签进行应用 */
+/* 使用子选择器（只会选择子代特定的标签）比后端选择器（会选择所有特定的后代标签）更加安全 */
+
+/* 可以通过 组件属性 和 slot（插槽） 进行应用样式，组件属性和slot不违反组件封装原则，是因为在组件内部已经规范和写好的 */
+/* 通过 组件属性 和 slot（插槽） 进行应用样式，需要通过参数传递进行修改样式 */
+/* .comment-container > v-tag:nth-child(1) > view {
+  background-color: #fffbdd;
+}
+
+.comment-container > v-tag:nth-child(2) > view {
+  background-color: #eefbff;
+} */
+
+.ex-tag1 {
+  background-color: #fffbdd !important;
+}
+
+.ex-tag2 {
+  background-color: #eefbff !important;
+}
+
+.detail-container {
+  width: 100%;
+  margin-bottom: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  margin-right: 30rpx;
+  color: #999;
+}

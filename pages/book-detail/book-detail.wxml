@@ -1,0 +1,50 @@
+<!-- WXML 中调用 WXS: src 指向引用模块的路径，只能使用相对路径； 定义 module 的名字，可以为任意名字  -->
+<wxs src="../../util/filter.wxs" module="util" />
+
+<view class="container">
+  <view class="head">
+    <image src="{{book.image}}"></image>
+    <text class='title'>{{book.title}}</text>
+    <text class='author'>{{book.author}}</text>
+  </view>
+  <view class="sub-container">
+    <text class="headline">短评</text>
+    <view class="comment-container">
+      <!-- util.limit(comments, 10) 限制短评只显示 10条 -->
+      <block wx:for="{{util.limit(comments, 10)}}" wx:key="content">
+        <v-tag tag-class="{{index == 0 ? 'ex-tag1' : '' || index == 1 ? 'ex-tag2' : ''}}" text="{{item.content}}">
+          <text class="num" slot="after">{{'+' + item.nums}}</text>
+        </v-tag>
+      </block>
+    </view>
+  </view>
+  <view class="sub-container">
+    <text class="headline">内容简介</text>
+    <!-- 对于<text></text>中的文本不要轻易换行，可能会出现与预期不符效果 -->
+    <!-- decode可以解析的有 &nbsp; &lt; &gt; &amp; &apos; &ensp; &emsp; -->
+    <!-- 此处 book.summary 文本数据中存在 \n，但是 text组件 并没有进行换行。  -->
+    <!-- book.summary 文本数据的原始数据是通过 Unicode编码 的，在调试工具中的 Network 看到的中文字符并不是其真正的原始数据 -->
+    <!-- 换行符 '\n' 通过 Unicode编码 为 '\\n'，所以 text组件 并不能进行换行。原始数据为 '\n'，在 text组件 中表现为 换行，但 '\\n' 并不能 -->
+    <!-- 可以使用 WXS, 通过 正则表达式 进行修改 -->
+    <text class="content" decode="{{true}}">{{util.format(book.summary)}}</text>
+  </view>
+  <view class="sub-container">
+    <text class="headline">书本信息</text>
+    <view class="detail-container">
+      <view class="vertical description">
+        <text>出版社</text>
+        <text>出版年</text>
+        <text>页数</text>
+        <text>定价</text>
+        <text>装帧</text>
+      </view>
+      <view class="vertical">
+        <text>{{book.publisher}}</text>
+        <text>{{book.pubdate}}</text>
+        <text>{{book.pages}}</text>
+        <text>{{book.price}}</text>
+        <text>{{book.binding}}</text>
+      </view>
+    </view>
+  </view>
+</view>

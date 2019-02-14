@@ -1,0 +1,28 @@
+// WXS（WeiXin Script）是小程序的一套脚本语言，结合 WXML，可以构建出页面的结构
+// WXS 可以在 WXML 中直接调用，JavaScript 不能再 WXML 中直接调用
+// WXS 中不能调用其他 javascript 文件中定义的函数，也不能调用小程序提供的API
+
+// WXS 中不能使用 const。const 是 JavaScript 中 ES6 的语法。
+// wxs 与 javascript 是不同的语言，有自己的语法，并不和 javascript 一致。
+
+var format = function(text){
+  if(!text){
+    return
+  }
+  // 此处需要替换的是 '\\n', 需要进转义，则为 '\\\\n'
+  var reg = getRegExp('\\\\n','g')
+  // 每个段落需要缩进两个字符，但是在 text组件 中，文本数据视为一整段，所以可以在每个换行符后面添加 &nbsp
+  return text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+}
+
+// 限制数组显示长度
+var limit = function(array, length){
+  return array.slice(0, length)
+}
+
+// WXS 在小程序中称为一个独立的模块，但不同于 ES6 中的模块
+// 如果需要 WXS 模块被其他的模块或者 WXML 调用的时候，同样需要使用到小程序中的 module.exports
+module.exports = {
+  format: format,
+  limit: limit
+}
