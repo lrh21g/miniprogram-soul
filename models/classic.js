@@ -1,6 +1,24 @@
 import { HTTP } from '../util/http.js'
 
 class ClassicModel extends HTTP {
+  // 获取我喜欢的周刊
+  getMyFavor(success) {
+    const params = {
+      url: 'classic/favor',
+      success: success
+    }
+    this.request(params)
+  }
+
+  // 获取某一期的详细信息
+  getById(cid, type, success) {
+    let params = {
+      url: `classic/${type}/${cid}`,
+      success: success
+    }
+    this.request(params)
+  }
+
   // 获取最新一期数据
   getLatest(sCallback) {
     this.request({

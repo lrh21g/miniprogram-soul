@@ -151,6 +151,16 @@
   margin-top: 10rpx;
 }
 
+.share-btn {
+  margin-top: 28rpx;
+  margin-left: 10rpx;
+}
+
+.share {
+  width: 40rpx;
+  height: 40rpx;
+}
+
 .posting-container {
   width: 100%;
   position: fixed;

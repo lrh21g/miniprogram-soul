@@ -1,0 +1,23 @@
+<!-- navigator组件 可以用于小程序之间的跳转 -->
+<!-- target：在哪个目标上发生跳转，默认当前小程序，可选值self(默认值)/miniProgram -->
+<!-- app-id：当target="miniProgram"时有效，要打开的小程序 appId -->
+<!-- open-type 有效值： -->
+<!-- >>> navigate	对应 wx.navigateTo 或 wx.navigateToMiniProgram 的功能	 -->
+<!-- >>> redirect	对应 wx.redirectTo 的功能	 -->
+<!-- >>> switchTab	对应 wx.switchTab 的功能	 -->
+<!-- >>> reLaunch	对应 wx.reLaunch 的功能 -->
+<!-- >>> navigateBack	对应 wx.navigateBack 的功能 -->
+<!-- >>> exit	退出小程序，target="miniProgram"时生效 -->
+<!-- <navigator class="nav" target="miniProgram" app-id="小程序appId" open-type="navigate">
+  <image class="vendor" src="/images/my/vendor.png"></image>
+</navigator>  -->
+
+<view class="container">
+  <image class="about-image" src="../../images/about/about@bg.jpg" />
+  <view class="about">
+    <text class="text">微信小程序</text>
+    <text class="text">SOUL</text>
+    <text class="text">作者</text>
+    <text class="text">凌荣海</text>
+  </view>
+</view>

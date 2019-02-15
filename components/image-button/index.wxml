@@ -1,0 +1,14 @@
+<!-- plain：按钮是否镂空，背景色透明 -->
+<!-- open-type 可参考小程序文档设置有效值，可用来获取用户信息、打开授权设置页等 -->
+<!-- open-type 有效值： -->
+<!-- >>> contact：打开客服会话，如果用户在会话中点击消息卡片后返回小程序，可以从 bindcontact 回调中获得具体信息 -->
+<!-- >>> share：触发用户转发 -->
+<!-- >>> getUserInfo：获取用户信息，可以从bindgetuserinfo回调中获取到用户信息 -->
+<!-- >>> getPhoneNumber：获取用户手机号，可以从bindgetphonenumber回调中获取到用户信息 -->
+<!-- >>> launchApp：打开APP，可以通过app-parameter属性设定向APP传的参数 -->
+<!-- >>> openSetting：打开授权设置页 -->
+<!-- >>> feedback：打开“意见反馈”页面，用户可提交反馈内容并上传日志，开发者可以登录小程序管理后台后进入左侧菜单“客服反馈”页面获取到反馈内容 -->
+<button plain="{{true}}" class="container"
+  bind:getuserinfo="onGetUserInfo" open-type="{{openType}}">
+  <slot name="img"></slot>
+</button>

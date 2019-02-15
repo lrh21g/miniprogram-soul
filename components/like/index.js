@@ -9,6 +9,9 @@ Component({
     },
     count: { // 喜欢的数量
       type: Number
+    },
+    readOnly: {
+      type: Boolean
     }
   },
 
@@ -25,6 +28,9 @@ Component({
    */
   methods: {
     onLike: function (event) {
+      if (this.properties.readOnly) {
+        return
+      }
       let like = this.properties.like
       let count = this.properties.count
       count = like ? count - 1 : count + 1
