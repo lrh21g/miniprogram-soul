@@ -1,0 +1,146 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 750rpx;
+  height: 100rpx;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+  z-index: 99;
+  background-color: #ffffff;
+}
+
+.search-container {
+  margin-left: 20rpx;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 50px;
+  background-color: #f5f5f5;
+}
+
+.in-bar {
+  color: #999;
+}
+
+.bar {
+  width: 1000rpx;
+  height: 68rpx;
+  display: inline-block;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: 28rpx;
+}
+
+.icon {
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 24rpx;
+  margin-right: 16rpx;
+}
+
+.cancel {
+  width: 120rpx;
+  line-height: 68rpx;
+  display: inline-block;
+  border: none;
+  text-align: center;
+}
+
+.cancel-img {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}
+
+.history {
+  width: 690rpx;
+  margin: 40rpx 0 20rpx 0;
+  margin-top: 160rpx;
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+}
+
+.hot-search {
+  margin-top: 70rpx;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  line-height: 30rpx;
+}
+
+.books-container v-book {
+  margin-bottom: 25rpx;
+}
+
+.books-container {
+  width: 570rpx;
+  margin-top: 100rpx;
+  padding: 0 90rpx 0 90rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.loading {
+  margin: 50rpx 0 50rpx 0;
+}
+
+.loading-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.empty-tip {
+  width: 100%;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+}
+
+.chunk {
+  width: 10rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+  display: inline-block;
+  background-color: #000;
+}
+
+.tags {
+  /* padding-left:15px; */
+  width: 630rpx;
+  margin-top: 24rpx;
+  padding-left: 30rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tags v-tag {
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.bar {
+  width: 500rpx;
+  height: 68rpx;
+  display: inline-block;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: 28rpx;
+}
