@@ -1,6 +1,8 @@
 import { BookModel } from '../../models/book.js'
+import { LikeModel } from '../../models/like.js'
 
-let bookModel = new BookModel()
+const bookModel = new BookModel()
+const likeModel = new LikeModel()
 
 Page({
 
@@ -11,13 +13,15 @@ Page({
     comments: [], // 短评信息
     book: null, // 书籍信息
     likeStatus: false, // 点赞状态
-    likeCount: 0 // 点赞数量
+    likeCount: 0, // 点赞数量
+    posting: false // 是否打开短评输入框
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading()
     // 页面接受外部传递的参数，传递的参数包含在页面的 onLoad 生命周期的 options 参数中
     const bid = options.bid
     const detail = bookModel.getDetail(bid)
@@ -57,6 +61,53 @@ Page({
     //     likeCount: res.fav_nums
     //   })
     // })
+  },
+
+  onLike (event) {
+    const like_or_cancel = event.detail.behavior
+    likeModel.like(like_or_cancel, this.data.book.id, 400)
+  },
+
+  onFakePost (event) {
+    this.setData({
+      posting: true
+    })
+  },
+
+  onCancel (event) {
+    this.setData({
+      posting: false
+    })
+  },
+
+  onPost (event) {
+    const comment = event.detail.text || event.detail.value
+    if (!comment) {
+      return
+    }
+    if (comment.length > 12) {
+      wx.showToast({
+        title: '短评最多12个字',
+        icon: 'none'
+      })
+      return
+    }
+    bookModel.postComment(this.data.book.id, comment)
+      .then(res => {
+        wx.showToast({
+          title: '+ 1',
+          icon: "none"
+        })
+        // unshift() 方法可向数组的开头添加一个或更多元素
+        this.data.comments.unshift({
+          content: comment,
+          nums: 1
+        })
+        this.setData({
+          comments: this.data.comments,
+          posting: false
+        })
+      })
   },
 
   /**

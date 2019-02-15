@@ -9,10 +9,11 @@
   </view>
   <view class="sub-container">
     <text class="headline">短评</text>
+    <text class="shadow" wx:if="{{comments == false}}">还没有短评</text>
     <view class="comment-container">
       <!-- util.limit(comments, 10) 限制短评只显示 10条 -->
       <block wx:for="{{util.limit(comments, 10)}}" wx:key="content">
-        <v-tag tag-class="{{index == 0 ? 'ex-tag1' : '' || index == 1 ? 'ex-tag2' : ''}}" text="{{item.content}}">
+        <v-tag tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
           <text class="num" slot="after">{{'+' + item.nums}}</text>
         </v-tag>
       </block>
@@ -48,3 +49,49 @@
     </view>
   </view>
 </view>
+
+<view class="post-container" hidden="{{posting}}">
+  <view class="post-fake" bind:tap="onFakePost">
+    <text>输入短评</text>
+  </view>
+  <view class="like-container">
+    <v-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"></v-like>
+  </view>
+</view>
+
+<view class="posting-container" wx:if="{{posting}}">
+    <view class="post-header">
+      <text wx:if="{{comments.length > 0}}">仅可点击标签+1</text>
+      <text wx:else>暂无短评</text>
+      <text class="cancel" bind:tap="onCancel">取消</text>
+    </view>
+    <view class="comment-container">
+      <block wx:for="{{util.limit(comments, 3)}}" wx:key="content">
+        <v-tag bind:tapping="onPost" tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
+          <text class="num" slot="after">{{'+' + item.nums}}</text>
+        </v-tag>
+      </block>
+    </view>
+    <!-- bindconfirm：点击完成按钮时触发，event.detail = {value: value} -->
+    <input bindconfirm="onPost" class="post" placeholder='短评最多12个字'></input>
+</view>
+
+<!-- 遮罩层 -->
+<v-mask wx:if="{{posting}}"/>
+
+<wxs module="tool">
+  // 用于处理短评第一条和第二条高亮
+  var highlight = function(index){
+    if(index == 0){
+      return 'ex-tag1'
+    }
+    if(index == 1){
+      return 'ex-tag2'
+    }
+    return ''
+  }
+
+  module.exports = {
+    highlight: highlight
+  }
+</wxs>
