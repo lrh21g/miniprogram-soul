@@ -2,4 +2,4 @@
 
 ## 小程序截图
 
-![流行01](./readme/images/liuxing01@50%.png "Optional title") ![流行02](./readme/images/liuxing02.png) ![流行03](./readme/images/liuxing03.png)
+![流行01](./readme/images/liuxing150.png) ![流行02](./readme/images/liuxing02.png) ![流行03](./readme/images/liuxing03.png)
