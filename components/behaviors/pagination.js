@@ -1,7 +1,7 @@
 const paginationBev = Behavior({
   data: {
     dataArray: [],
-    total: null, // 数据总个数
+    total: null, // 书籍总数量
     noneResult: false, // 判断是否存在搜索结果
     loading: false
   },
